@@ -2,7 +2,9 @@ from flask import Flask, request, jsonify
 from transformers import pipeline
 
 app = Flask(__name__)
-question_answerer = pipeline("question-answering")
+
+# Specify the model explicitly
+question_answerer = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 
 @app.route("/ask", methods=["POST"])
 def ask():
